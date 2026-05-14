@@ -575,6 +575,14 @@
       if (e.key === 'Enter') submitBtn.click();
     });
 
+    // 데모 카드 터치 시 즉시 입력 화면으로
+    document.querySelector('.format-demo').addEventListener('click', function(e) {
+      if (inputState.style.display === 'flex') return; // 이미 입력 중이면 무시
+      if (e.target.closest('#inputState')) return;     // 입력창 내부 클릭 무시
+      clearInterval(rightTimer);
+      showInput();
+    });
+
     startAnim('12345678', false);
   </script>
 </body>
