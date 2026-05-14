@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Q.co.kr</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,700&family=Noto+Sans+KR:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --gold: #B8960C;
+    }
+
+    body {
+      background: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Noto Sans KR', sans-serif;
+    }
+
+    /* ── 메인 로고 영역 ── */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 72px;
+    }
+
+    .logo-row {
+      display: flex;
+      align-items: baseline;
+    }
+
+    .q-letter {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 700;
+      font-size: 108px;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    .q-dot {
+      width: 13px;
+      height: 13px;
+      background: var(--gold);
+      border-radius: 50%;
+      margin-left: 3px;
+      flex-shrink: 0;
+    }
+
+    .q-dash {
+      width: 54px;
+      height: 2px;
+      background: var(--gold);
+      margin-left: 10px;
+      margin-bottom: 6px;
+    }
+
+    .anniversary {
+      margin-top: 16px;
+      text-align: center;
+      color: #bbb;
+      font-size: 10.5px;
+      font-weight: 300;
+      letter-spacing: 4px;
+      line-height: 2;
+    }
+
+    /* ── 서비스 카드 영역 ── */
+    .services {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .service-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-decoration: none;
+      border: 1px solid #ede8df;
+      padding: 30px 44px 26px;
+      transition: border-color 0.3s, background 0.3s;
+      min-width: 160px;
+    }
+
+    .service-card:hover {
+      border-color: var(--gold);
+      background: #fffdf7;
+    }
+
+    .service-icon {
+      margin-bottom: 16px;
+      color: var(--gold);
+    }
+
+    /* 메일 아이콘 */
+    .icon-mail {
+      width: 26px;
+      height: 20px;
+      border: 2px solid var(--gold);
+      position: relative;
+    }
+    .icon-mail::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      border-top: 2px solid var(--gold);
+      border-left: 2px solid transparent;
+      border-right: 2px solid transparent;
+      height: 10px;
+      clip-path: polygon(0 0, 50% 55%, 100% 0);
+      background: var(--gold);
+    }
+
+    /* AI 아이콘 — 작은 스파크 */
+    .icon-ai {
+      width: 24px;
+      height: 24px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .icon-ai::before,
+    .icon-ai::after {
+      content: '';
+      position: absolute;
+      background: var(--gold);
+    }
+    .icon-ai::before {
+      width: 2px;
+      height: 24px;
+    }
+    .icon-ai::after {
+      width: 24px;
+      height: 2px;
+    }
+    .icon-ai-diag {
+      position: absolute;
+      width: 2px;
+      height: 17px;
+      background: var(--gold);
+      transform: rotate(45deg);
+    }
+    .icon-ai-diag2 {
+      position: absolute;
+      width: 2px;
+      height: 17px;
+      background: var(--gold);
+      transform: rotate(-45deg);
+    }
+
+    .service-title {
+      font-size: 12px;
+      letter-spacing: 2px;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+
+    .service-desc {
+      font-size: 10px;
+      letter-spacing: 0.5px;
+      color: #ccc;
+    }
+
+    /* ── 구분선 ── */
+    .divider {
+      width: 1px;
+      height: 40px;
+      background: #e8e0d0;
+      margin-bottom: 72px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="hero">
+    <div class="logo-row">
+      <span class="q-letter">Q</span>
+      <span class="q-dot"></span>
+      <span class="q-dash"></span>
+    </div>
+    <p class="anniversary">30TH ANNIVERSARY<br>SINCE 1996</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="services">
+    <a href="https://010q.co.kr" class="service-card">
+      <span class="service-icon">
+        <svg width="28" height="22" viewBox="0 0 28 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="1" y="1" width="26" height="20" rx="1" stroke="#B8960C" stroke-width="1.5"/>
+          <polyline points="1,1 14,12 27,1" stroke="#B8960C" stroke-width="1.5" fill="none"/>
+        </svg>
+      </span>
+      <span class="service-title">010Q MAIL</span>
+      <span class="service-desc">010q.co.kr</span>
+    </a>
+
+    <a href="https://ai.q.co.kr" class="service-card">
+      <span class="service-icon">
+        <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <line x1="13" y1="0" x2="13" y2="26" stroke="#B8960C" stroke-width="1.5"/>
+          <line x1="0" y1="13" x2="26" y2="13" stroke="#B8960C" stroke-width="1.5"/>
+          <line x1="3.5" y1="3.5" x2="22.5" y2="22.5" stroke="#B8960C" stroke-width="1.5"/>
+          <line x1="22.5" y1="3.5" x2="3.5" y2="22.5" stroke="#B8960C" stroke-width="1.5"/>
+          <circle cx="13" cy="13" r="3.5" stroke="#B8960C" stroke-width="1.5"/>
+        </svg>
+      </span>
+      <span class="service-title">AI.Q</span>
+      <span class="service-desc">ai.q.co.kr</span>
+    </a>
+  </div>
+
+</body>
+</html>
