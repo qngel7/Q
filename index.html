@@ -58,13 +58,44 @@
       flex-shrink: 0;
     }
 
-    .q-dash {
-      width: 54px;
-      height: 2px;
-      background: var(--gold);
+    .q-search {
       margin-left: 10px;
       margin-bottom: 6px;
+      display: flex;
+      align-items: center;
     }
+
+    .q-search input {
+      font-family: 'Noto Sans KR', sans-serif;
+      font-weight: 300;
+      font-size: 15px;
+      letter-spacing: 1px;
+      color: #1a1a1a;
+      background: transparent;
+      border: none;
+      border-bottom: 2px solid var(--gold);
+      outline: none;
+      width: 200px;
+      padding-bottom: 3px;
+    }
+
+    .q-search input::placeholder {
+      color: #ccc;
+      font-size: 12px;
+      letter-spacing: 2px;
+    }
+
+    .q-search button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0 0 3px 8px;
+      color: var(--gold);
+      display: flex;
+      align-items: center;
+    }
+
+    .q-search button:hover { opacity: 0.7; }
 
     .anniversary {
       margin-top: 16px;
@@ -190,7 +221,15 @@
     <div class="logo-row">
       <span class="q-letter">Q</span>
       <span class="q-dot"></span>
-      <span class="q-dash"></span>
+      <form class="q-search" action="https://search.naver.com/search.naver" method="get" target="_blank">
+        <input type="text" name="query" placeholder="SEARCH" autocomplete="off">
+        <button type="submit">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <circle cx="5.5" cy="5.5" r="4.5" stroke="#B8960C" stroke-width="1.5"/>
+            <line x1="9" y1="9" x2="13" y2="13" stroke="#B8960C" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </form>
     </div>
     <p class="anniversary">30TH ANNIVERSARY<br>SINCE 1996</p>
   </div>
