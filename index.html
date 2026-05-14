@@ -62,10 +62,10 @@
     }
 
     .q-search {
-      margin-left: 10px;
-      margin-bottom: 6px;
+      margin-top: 20px;
       display: flex;
       align-items: center;
+      gap: 0;
     }
 
     .q-search input {
@@ -78,7 +78,7 @@
       border: none;
       border-bottom: 2px solid var(--gold);
       outline: none;
-      width: 200px;
+      width: 240px;
       padding-bottom: 3px;
     }
 
@@ -104,10 +104,11 @@
       font-family: 'Cormorant Garamond', serif;
       font-style: italic;
       font-weight: 700;
-      font-size: 108px;
+      font-size: 20px;
       color: #D4681A;
       line-height: 1;
-      padding: 0 0 0 4px !important;
+      padding: 0 0 2px 4px !important;
+      letter-spacing: 0.5px;
       transition: opacity 0.2s;
     }
 
@@ -232,8 +233,7 @@
     @media (max-width: 600px) {
       .q-letter { font-size: 68px; }
       .q-dot { width: 8px; height: 8px; }
-      .q-search input { width: 110px; font-size: 13px; }
-      .btn-qsite { font-size: 68px; }
+      .q-search input { width: 180px; font-size: 13px; }
       .hero { margin-bottom: 48px; }
     }
   </style>
@@ -244,24 +244,24 @@
     <div class="logo-row">
       <span class="q-letter">Q</span>
       <span class="q-dot"></span>
-      <form class="q-search" action="https://search.naver.com/search.naver" method="get" target="_blank">
-        <input id="searchInput" type="text" name="query" placeholder="SEARCH" autocomplete="off">
-        <button type="submit">
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-            <circle cx="5.5" cy="5.5" r="4.5" stroke="#B8960C" stroke-width="1.5"/>
-            <line x1="9" y1="9" x2="13" y2="13" stroke="#B8960C" stroke-width="1.5" stroke-linecap="round"/>
-          </svg>
-        </button>
-        <button type="button" class="btn-qsite" onclick="searchQ()">Q</button>
-      </form>
-      <script>
-        function searchQ() {
-          const q = document.getElementById('searchInput').value.trim();
-          const url = 'https://www.google.com/search?q=' + encodeURIComponent(q + ' site:q.co.kr');
-          window.open(url, '_blank');
-        }
-      </script>
     </div>
+    <form class="q-search" action="https://search.naver.com/search.naver" method="get" target="_blank">
+      <input id="searchInput" type="text" name="query" placeholder="SEARCH" autocomplete="off">
+      <button type="submit">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <circle cx="5.5" cy="5.5" r="4.5" stroke="#B8960C" stroke-width="1.5"/>
+          <line x1="9" y1="9" x2="13" y2="13" stroke="#B8960C" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </button>
+      <button type="button" class="btn-qsite" onclick="searchQ()">Q</button>
+    </form>
+    <script>
+      function searchQ() {
+        const q = document.getElementById('searchInput').value.trim();
+        const url = 'https://www.google.com/search?q=' + encodeURIComponent(q + ' site:q.co.kr');
+        window.open(url, '_blank');
+      }
+    </script>
     <p class="anniversary">30TH ANNIVERSARY<br>SINCE 1996</p>
   </div>
 
