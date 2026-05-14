@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI.Q — Q.co.kr</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,700&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --gold: #B8960C;
+      --orange: #D4681A;
+      --gray: #aaa;
+      --dark: #1a1a1a;
+    }
+
+    body {
+      background: #fff;
+      color: var(--dark);
+      font-family: 'Noto Sans KR', sans-serif;
+      font-weight: 300;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 100px 40px 60px;
+      text-align: center;
+    }
+
+    .logo-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+    }
+
+    .logo-ai {
+      font-size: 14px;
+      letter-spacing: 4px;
+      color: var(--gold);
+      font-weight: 500;
+      margin-right: 2px;
+    }
+
+    .logo-dot {
+      font-size: 14px;
+      color: var(--gold);
+      margin-right: 2px;
+    }
+
+    .logo-q {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 700;
+      font-size: 88px;
+      color: var(--orange);
+      line-height: 1;
+    }
+
+    .hero-tagline {
+      margin-top: 20px;
+      font-size: 11px;
+      letter-spacing: 3px;
+      color: var(--gray);
+    }
+
+    /* ── 구분선 ── */
+    .divider {
+      width: 1px;
+      height: 40px;
+      background: #e8e0d0;
+      margin: 0 0 60px;
+    }
+
+    /* ── AI 서비스 카드 ── */
+    .services {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: #e8e0d0;
+      width: 100%;
+      max-width: 800px;
+      margin: 0 40px;
+    }
+
+    .service-card {
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-decoration: none;
+      padding: 36px 20px 28px;
+      transition: background 0.3s;
+    }
+
+    .service-card:hover { background: #fffdf7; }
+
+    .service-icon {
+      width: 36px;
+      height: 36px;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .service-name {
+      font-size: 11px;
+      letter-spacing: 2px;
+      color: var(--gold);
+      margin-bottom: 6px;
+      font-weight: 500;
+    }
+
+    .service-url {
+      font-size: 9px;
+      letter-spacing: 0.5px;
+      color: #ccc;
+    }
+
+    /* ── YouTube ── */
+    .yt-section {
+      width: 100%;
+      max-width: 800px;
+      margin: 60px 40px 0;
+      padding: 0 40px;
+    }
+
+    .yt-label {
+      font-size: 9px;
+      letter-spacing: 4px;
+      color: var(--gray);
+      margin-bottom: 8px;
+    }
+
+    .yt-title {
+      font-size: 13px;
+      color: var(--dark);
+      font-weight: 400;
+      letter-spacing: 0.5px;
+      margin-bottom: 20px;
+    }
+
+    .yt-title span {
+      color: var(--gold);
+    }
+
+    .yt-wrap {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%;
+      background: #f7f6f4;
+    }
+
+    .yt-wrap iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      margin-top: 80px;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+      border-top: 1px solid #f0ece4;
+      width: 100%;
+    }
+
+    .footer-q {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 700;
+      font-size: 28px;
+      color: var(--gold);
+    }
+
+    footer a {
+      font-size: 10px;
+      letter-spacing: 3px;
+      color: var(--gray);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    footer a:hover { color: var(--gold); }
+
+    /* ── 모바일 ── */
+    @media (max-width: 600px) {
+      .services { grid-template-columns: repeat(2, 1fr); }
+      .yt-section { padding: 0 20px; }
+      .hero { padding: 60px 20px 40px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="hero">
+    <div class="logo-row">
+      <span class="logo-ai">AI</span>
+      <span class="logo-dot">.</span>
+      <span class="logo-q">Q</span>
+    </div>
+    <p class="hero-tagline">ARTIFICIAL INTELLIGENCE LINKS</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- AI 서비스 카드 -->
+  <div class="services">
+
+    <a href="https://claude.ai" class="service-card" target="_blank">
+      <div class="service-icon">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+          <circle cx="16" cy="16" r="14" stroke="#B8960C" stroke-width="1.5"/>
+          <path d="M10 20 L16 10 L22 20" stroke="#B8960C" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <line x1="12" y1="17" x2="20" y2="17" stroke="#B8960C" stroke-width="1.5"/>
+        </svg>
+      </div>
+      <span class="service-name">CLAUDE</span>
+      <span class="service-url">claude.ai</span>
+    </a>
+
+    <a href="https://chatgpt.com" class="service-card" target="_blank">
+      <div class="service-icon">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+          <circle cx="16" cy="16" r="14" stroke="#B8960C" stroke-width="1.5"/>
+          <path d="M9 19 Q9 23 13 23 L22 23 Q26 23 26 19 L26 15 Q26 11 22 11 L19 11" stroke="#B8960C" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+          <path d="M23 13 Q23 9 19 9 L10 9 Q6 9 6 13 L6 17 Q6 21 10 21 L13 21" stroke="#B8960C" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <span class="service-name">CHATGPT</span>
+      <span class="service-url">chatgpt.com</span>
+    </a>
+
+    <a href="https://gemini.google.com" class="service-card" target="_blank">
+      <div class="service-icon">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+          <path d="M16 4 L18 14 L28 16 L18 18 L16 28 L14 18 L4 16 L14 14 Z" stroke="#B8960C" stroke-width="1.5" fill="none" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <span class="service-name">GEMINI</span>
+      <span class="service-url">gemini.google.com</span>
+    </a>
+
+    <a href="https://www.perplexity.ai" class="service-card" target="_blank">
+      <div class="service-icon">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+          <circle cx="16" cy="12" r="6" stroke="#B8960C" stroke-width="1.5"/>
+          <line x1="16" y1="18" x2="16" y2="28" stroke="#B8960C" stroke-width="1.5"/>
+          <line x1="10" y1="22" x2="22" y2="22" stroke="#B8960C" stroke-width="1.5"/>
+        </svg>
+      </div>
+      <span class="service-name">PERPLEXITY</span>
+      <span class="service-url">perplexity.ai</span>
+    </a>
+
+  </div>
+
+  <!-- YouTube -->
+  <div class="yt-section">
+    <p class="yt-label">RECOMMENDED LECTURE</p>
+    <p class="yt-title">Intro to Large Language Models — <span>Andrej Karpathy</span></p>
+    <div class="yt-wrap">
+      <iframe src="https://www.youtube.com/embed/zjkBMFhNj_g" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <footer>
+    <span class="footer-q">Q.</span>
+    <a href="https://q.co.kr">← Q.CO.KR</a>
+  </footer>
+
+</body>
+</html>
