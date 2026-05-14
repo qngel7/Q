@@ -251,28 +251,6 @@
       margin-bottom: 4px;
     }
 
-    /* ── 모바일 ── */
-    @media (max-width: 600px) {
-      .format-demo {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        gap: 12px;
-        padding: 28px 32px;
-      }
-
-      .format-demo > span:empty { display: none; }
-
-      #leftLabel              { order: 1; }
-      #leftContent            { order: 2; }
-      .demo-arrow             { order: 3; }
-      .demo-arrow svg         { display: none; }
-      .demo-arrow::after      { content: ''; display: block; width: 1px; height: 28px; background: var(--gold); margin: 0 auto; }
-      .format-demo .demo-label:not(#leftLabel) { order: 4; }
-      .demo-right-email       { order: 5; }
-    }
-
     /* ── TIERS 섹션 ── */
     .tiers-grid {
       display: grid;
@@ -386,6 +364,33 @@
       font-size: 28px;
       color: var(--gold);
     }
+
+    /* ── 모바일 ── */
+    @media (max-width: 600px) {
+      .format-demo {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 12px;
+        padding: 28px 32px;
+      }
+
+      .format-demo > span:empty { display: none; }
+
+      #leftLabel              { order: 1; }
+      #leftContent            { order: 2; }
+      .demo-arrow             { order: 3; }
+      .demo-arrow svg         { display: none; }
+      .demo-arrow::after      { content: ''; display: block; width: 1px; height: 28px; background: var(--gold); margin: 0 auto; }
+      .format-demo .demo-label:not(#leftLabel) { order: 4; }
+      .demo-right-email       { order: 5; }
+
+      .tiers-grid { grid-template-columns: 1fr; }
+
+      .infra-stack { flex-direction: column; align-items: stretch; }
+      .infra-item { text-align: left; }
+    }
   </style>
 </head>
 <body>
@@ -444,7 +449,7 @@
     <div class="tiers-grid">
       <div class="tier-card">
         <p class="tier-type">PERSONAL</p>
-        <p class="tier-email">010XXXXXXXX@<span class="q">Q</span>.co.kr</p>
+        <p class="tier-email">01077777777@<span class="q">Q</span>.co.kr</p>
         <p class="tier-desc">V-ID-010 기반 개인 Q메일<br>휴대폰 번호가 이메일 주소</p>
         <span class="tier-price">명함제출시 제공</span>
       </div>
@@ -471,8 +476,8 @@
         <p class="infra-role">Email Routing</p>
       </div>
       <div class="infra-item">
-        <p class="infra-name">GMAIL</p>
-        <p class="infra-role">SMTP Send As</p>
+        <p class="infra-name">메일 서비스</p>
+        <p class="infra-role">네이버·다음·구글·MS 기존대로 사용</p>
       </div>
       <div class="infra-item">
         <p class="infra-name">COST</p>
