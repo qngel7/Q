@@ -251,6 +251,28 @@
       margin-bottom: 4px;
     }
 
+    /* ── 모바일 ── */
+    @media (max-width: 600px) {
+      .format-demo {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 12px;
+        padding: 28px 32px;
+      }
+
+      .format-demo > span:empty { display: none; }
+
+      #leftLabel              { order: 1; }
+      #leftContent            { order: 2; }
+      .demo-arrow             { order: 3; }
+      .demo-arrow svg         { display: none; }
+      .demo-arrow::after      { content: ''; display: block; width: 1px; height: 28px; background: var(--gold); margin: 0 auto; }
+      .format-demo .demo-label:not(#leftLabel) { order: 4; }
+      .demo-right-email       { order: 5; }
+    }
+
     /* ── TIERS 섹션 ── */
     .tiers-grid {
       display: grid;
