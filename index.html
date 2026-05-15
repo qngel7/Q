@@ -256,8 +256,17 @@
       <button type="button" class="btn-qsite" onclick="searchQ()">Q</button>
     </form>
     <script>
+      const SHORTCUTS = { 'hemp': 'https://hemp.q.co.kr', '헴프': 'https://hemp.q.co.kr' };
+
+      document.querySelector('.q-search').addEventListener('submit', function(e) {
+        const q = document.getElementById('searchInput').value.trim().toLowerCase();
+        if (SHORTCUTS[q]) { e.preventDefault(); window.open(SHORTCUTS[q], '_blank'); }
+      });
+
       function searchQ() {
         const q = document.getElementById('searchInput').value.trim();
+        const lq = q.toLowerCase();
+        if (SHORTCUTS[lq]) { window.open(SHORTCUTS[lq], '_blank'); return; }
         const url = 'https://www.google.com/search?q=' + encodeURIComponent(q + ' site:q.co.kr');
         window.open(url, '_blank');
       }
