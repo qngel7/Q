@@ -1,16 +1,22 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Q.co.kr</title>
   <link rel="manifest" href="/manifest.json">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <meta name="theme-color" content="#B8960C">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,700&family=Noto+Sans+KR:wght@300;400&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,700&family=Noto+Sans+KR:wght@300;400&display=swap"
+    rel="stylesheet">
   <style>
-    *, *::before, *::after {
+    *,
+    *::before,
+    *::after {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
@@ -79,7 +85,8 @@
       border-bottom: 2px solid var(--gold);
       outline: none;
       width: 240px;
-      padding-bottom: 3px;
+      height: 36px;
+      padding: 0;
     }
 
     .q-search input::placeholder {
@@ -91,35 +98,82 @@
     .q-search button {
       background: none;
       border: none;
+      border-bottom: 2px solid transparent;
       cursor: pointer;
-      padding: 0 0 3px 8px;
+      padding: 0 0 0 8px;
       color: var(--gold);
       display: flex;
       align-items: center;
+      height: 36px;
     }
 
-    .q-search button:hover { opacity: 0.7; }
+    .q-search button:hover {
+      opacity: 0.7;
+    }
 
-    .btn-qsite {
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic;
-      font-weight: 700;
-      font-size: 20px;
-      color: #D4681A;
-      line-height: 1;
-      padding: 0 0 2px 4px !important;
-      letter-spacing: 0.5px;
+    /* ── 검색창 티커(Marquee) 애니메이션 ── */
+    .ticker-wrapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      padding-bottom: 2px;
       transition: opacity 0.2s;
     }
 
+    .ticker-content {
+      white-space: nowrap;
+      animation: ticker-scroll 18s linear infinite;
+      font-size: 13px;
+      letter-spacing: 1px;
+    }
+
+    .naver-ticker .ticker-content {
+      color: var(--gold);
+      opacity: 0.55;
+    }
+
+    .google-ticker .ticker-content {
+      color: var(--gold);
+      opacity: 0.55;
+      animation-direction: reverse;
+    }
+
+    input:focus+.ticker-wrapper,
+    input:not(:placeholder-shown)+.ticker-wrapper {
+      opacity: 0;
+    }
+
+    @keyframes ticker-scroll {
+      from {
+        transform: translateX(240px);
+      }
+
+      to {
+        transform: translateX(-100%);
+      }
+    }
+
+    .logo-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      margin-bottom: 8px;
+    }
+
     .anniversary {
-      margin-top: 16px;
-      text-align: center;
+      text-align: left;
       color: #bbb;
       font-size: 10.5px;
       font-weight: 300;
       letter-spacing: 4px;
       line-height: 2;
+      padding-top: 20px;
     }
 
     /* ── 서비스 카드 영역 ── */
@@ -158,10 +212,13 @@
       border: 2px solid var(--gold);
       position: relative;
     }
+
     .icon-mail::before {
       content: '';
       position: absolute;
-      top: 0; left: 0; right: 0;
+      top: 0;
+      left: 0;
+      right: 0;
       border-top: 2px solid var(--gold);
       border-left: 2px solid transparent;
       border-right: 2px solid transparent;
@@ -179,20 +236,24 @@
       align-items: center;
       justify-content: center;
     }
+
     .icon-ai::before,
     .icon-ai::after {
       content: '';
       position: absolute;
       background: var(--gold);
     }
+
     .icon-ai::before {
       width: 2px;
       height: 24px;
     }
+
     .icon-ai::after {
       width: 24px;
       height: 2px;
     }
+
     .icon-ai-diag {
       position: absolute;
       width: 2px;
@@ -200,6 +261,7 @@
       background: var(--gold);
       transform: rotate(45deg);
     }
+
     .icon-ai-diag2 {
       position: absolute;
       width: 2px;
@@ -231,47 +293,103 @@
 
     /* ── 모바일 ── */
     @media (max-width: 600px) {
-      .q-letter { font-size: 68px; }
-      .q-dot { width: 8px; height: 8px; }
-      .q-search input { width: 180px; font-size: 13px; }
-      .hero { margin-bottom: 48px; }
+      .q-letter {
+        font-size: 68px;
+      }
+
+      .q-dot {
+        width: 8px;
+        height: 8px;
+      }
+
+      .q-search input {
+        width: 180px;
+        font-size: 13px;
+      }
+
+      .hero {
+        margin-bottom: 48px;
+      }
     }
   </style>
 </head>
+
 <body>
 
   <div class="hero">
-    <div class="logo-row">
-      <span class="q-letter">Q</span>
-      <span class="q-dot"></span>
+    <div class="logo-wrapper">
+      <div class="logo-row">
+        <span class="q-letter">Q</span>
+        <span class="q-dot"></span>
+      </div>
+      <p class="anniversary"><span style="color: #FF6600; font-weight: 500; font-size: 13px;">30</span>TH
+        ANNIVERSARY<br>SINCE <span style="color: #FF6600; font-weight: 500; font-size: 13px;">1996</span></p>
     </div>
-    <form class="q-search" action="https://search.naver.com/search.naver" method="get" target="_blank">
-      <input id="searchInput" type="text" name="query" placeholder="SEARCH" autocomplete="off">
-      <button type="submit">
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-          <circle cx="5.5" cy="5.5" r="4.5" stroke="#B8960C" stroke-width="1.5"/>
-          <line x1="9" y1="9" x2="13" y2="13" stroke="#B8960C" stroke-width="1.5" stroke-linecap="round"/>
-        </svg>
-      </button>
-      <button type="button" class="btn-qsite" onclick="searchQ()">Q</button>
-    </form>
+    <div class="search-container" style="display:flex; flex-direction:column; gap:0px; margin-top: 20px;">
+      <form id="formNaver" class="q-search" action="https://search.naver.com/search.naver" method="get" target="_blank"
+        style="margin-top: 0;">
+        <div style="position: relative; width: 240px;">
+          <input id="naverSearchInput" type="text" name="query" placeholder=" " autocomplete="off"
+            style="border-bottom-color: var(--gold);">
+          <div class="ticker-wrapper naver-ticker">
+            <div class="ticker-content">1. Qdot 오픈 &nbsp;&nbsp;&nbsp; 2. 010Qmail 출시 &nbsp;&nbsp;&nbsp; 3. 네이버 날씨
+              &nbsp;&nbsp;&nbsp; 4. 환율조회 &nbsp;&nbsp;&nbsp; 5. AI 트렌드</div>
+          </div>
+        </div>
+        <button type="submit">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <circle cx="5.5" cy="5.5" r="4.5" stroke="#03C75A" stroke-width="1.5" />
+            <line x1="9" y1="9" x2="13" y2="13" stroke="#03C75A" stroke-width="1.5" stroke-linecap="round" />
+          </svg>
+        </button>
+      </form>
+      <form id="formGoogle" class="q-search" style="margin-top: 0;">
+        <div style="position: relative; width: 240px;">
+          <input id="googleSearchInput" type="text" placeholder=" " autocomplete="off"
+            style="border-bottom: 2px solid transparent;">
+          <div class="ticker-wrapper google-ticker">
+            <div class="ticker-content">hemp.q.co.kr &nbsp;&nbsp;•&nbsp;&nbsp; 010q.q.co.kr &nbsp;&nbsp;•&nbsp;&nbsp;
+              ai.q.co.kr &nbsp;&nbsp;•&nbsp;&nbsp; mail.q.co.kr &nbsp;&nbsp;•&nbsp;&nbsp; shop.q.co.kr</div>
+          </div>
+        </div>
+        <button type="button" onclick="searchQGoogle()">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <circle cx="5.5" cy="5.5" r="4.5" stroke="#4285F4" stroke-width="1.5" />
+            <line x1="9" y1="9" x2="13" y2="13" stroke="#EA4335" stroke-width="1.5" stroke-linecap="round" />
+          </svg>
+        </button>
+      </form>
+    </div>
     <script>
       const SHORTCUTS = { 'hemp': 'https://hemp.q.co.kr', '헴프': 'https://hemp.q.co.kr' };
 
-      document.querySelector('.q-search').addEventListener('submit', function(e) {
-        const q = document.getElementById('searchInput').value.trim().toLowerCase();
-        if (SHORTCUTS[q]) { e.preventDefault(); window.open(SHORTCUTS[q], '_blank'); }
+      function handleShortcut(q) {
+        const lq = q.trim().toLowerCase();
+        if (SHORTCUTS[lq]) {
+          window.open(SHORTCUTS[lq], '_blank');
+          return true;
+        }
+        return false;
+      }
+
+      document.getElementById('formNaver').addEventListener('submit', function (e) {
+        const q = document.getElementById('naverSearchInput').value;
+        if (handleShortcut(q)) { e.preventDefault(); }
       });
 
-      function searchQ() {
-        const q = document.getElementById('searchInput').value.trim();
-        const lq = q.toLowerCase();
-        if (SHORTCUTS[lq]) { window.open(SHORTCUTS[lq], '_blank'); return; }
+      document.getElementById('formGoogle').addEventListener('submit', function (e) {
+        e.preventDefault();
+        searchQGoogle();
+      });
+
+      function searchQGoogle() {
+        const q = document.getElementById('googleSearchInput').value.trim();
+        if (handleShortcut(q)) return;
         const url = 'https://www.google.com/search?q=' + encodeURIComponent(q + ' site:q.co.kr');
         window.open(url, '_blank');
       }
     </script>
-    <p class="anniversary">30TH ANNIVERSARY<br>SINCE 1996</p>
+
   </div>
 
   <div class="divider"></div>
@@ -280,8 +398,8 @@
     <a href="https://010q.q.co.kr" class="service-card">
       <span class="service-icon">
         <svg width="28" height="22" viewBox="0 0 28 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="1" y="1" width="26" height="20" rx="1" stroke="#B8960C" stroke-width="1.5"/>
-          <polyline points="1,1 14,12 27,1" stroke="#B8960C" stroke-width="1.5" fill="none"/>
+          <rect x="1" y="1" width="26" height="20" rx="1" stroke="#B8960C" stroke-width="1.5" />
+          <polyline points="1,1 14,12 27,1" stroke="#B8960C" stroke-width="1.5" fill="none" />
         </svg>
       </span>
       <span class="service-title">010Q MAIL</span>
@@ -291,11 +409,11 @@
     <a href="https://ai.q.co.kr" class="service-card">
       <span class="service-icon">
         <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <line x1="13" y1="0" x2="13" y2="26" stroke="#B8960C" stroke-width="1.5"/>
-          <line x1="0" y1="13" x2="26" y2="13" stroke="#B8960C" stroke-width="1.5"/>
-          <line x1="3.5" y1="3.5" x2="22.5" y2="22.5" stroke="#B8960C" stroke-width="1.5"/>
-          <line x1="22.5" y1="3.5" x2="3.5" y2="22.5" stroke="#B8960C" stroke-width="1.5"/>
-          <circle cx="13" cy="13" r="3.5" stroke="#B8960C" stroke-width="1.5"/>
+          <line x1="13" y1="0" x2="13" y2="26" stroke="#B8960C" stroke-width="1.5" />
+          <line x1="0" y1="13" x2="26" y2="13" stroke="#B8960C" stroke-width="1.5" />
+          <line x1="3.5" y1="3.5" x2="22.5" y2="22.5" stroke="#B8960C" stroke-width="1.5" />
+          <line x1="22.5" y1="3.5" x2="3.5" y2="22.5" stroke="#B8960C" stroke-width="1.5" />
+          <circle cx="13" cy="13" r="3.5" stroke="#B8960C" stroke-width="1.5" />
         </svg>
       </span>
       <span class="service-title">AI.Q</span>
@@ -304,4 +422,5 @@
   </div>
 
 </body>
+
 </html>
