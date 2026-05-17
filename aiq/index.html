@@ -81,50 +81,100 @@
       margin: 0 0 60px;
     }
 
-    /* ── AI 서비스 카드 ── */
-    .services {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1px;
-      background: #e8e0d0;
+    /* ── RANKING LIST ── */
+    .ranking-section {
       width: 100%;
       max-width: 800px;
-      margin: 0 40px;
-    }
-
-    .service-card {
-      background: #fff;
+      padding: 0 40px;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      text-decoration: none;
-      padding: 36px 20px 28px;
-      transition: background 0.3s;
+      gap: 16px;
     }
 
-    .service-card:hover { background: #fffdf7; }
+    .sort-toggle {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
 
-    .service-icon {
-      width: 36px;
-      height: 36px;
-      margin-bottom: 16px;
+    .toggle-btn {
+      flex: 1;
+      padding: 12px;
+      background: #f0ece4;
+      border: 1px solid #e8e0d0;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 500;
+      color: #888;
+      transition: all 0.3s;
+    }
+
+    .toggle-btn.active {
+      background: var(--gold);
+      color: #fff;
+      border-color: var(--gold);
+      box-shadow: 0 4px 10px rgba(184, 150, 12, 0.3);
+    }
+
+    .ranking-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .rank-card {
       display: flex;
       align-items: center;
-      justify-content: center;
+      background: #fff;
+      border: 1px solid #e8e0d0;
+      border-radius: 12px;
+      padding: 16px 20px;
+      text-decoration: none;
+      color: var(--dark);
+      transition: all 0.3s;
     }
 
-    .service-name {
-      font-size: 11px;
-      letter-spacing: 2px;
+    .rank-card:hover {
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      transform: translateY(-2px);
+      border-color: var(--gold);
+    }
+
+    .rank-num {
+      font-size: 24px;
+      font-weight: 700;
       color: var(--gold);
-      margin-bottom: 6px;
-      font-weight: 500;
+      width: 40px;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
     }
 
-    .service-url {
-      font-size: 9px;
-      letter-spacing: 0.5px;
-      color: #ccc;
+    .rank-info {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .ai-name {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .ai-version {
+      font-size: 11px;
+      color: var(--gray);
+    }
+
+    .ai-users {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--orange);
+      background: #fff3eb;
+      padding: 4px 8px;
+      border-radius: 12px;
+      white-space: nowrap;
     }
 
     /* ── YouTube ── */
@@ -201,7 +251,7 @@
 
     /* ── 모바일 ── */
     @media (max-width: 600px) {
-      .services { grid-template-columns: repeat(2, 1fr); }
+      .ranking-section { padding: 0 20px; }
       .yt-section { padding: 0 20px; }
       .hero { padding: 60px 20px 40px; }
     }
@@ -220,55 +270,15 @@
 
   <div class="divider"></div>
 
-  <!-- AI 서비스 카드 -->
-  <div class="services">
-
-    <a href="https://claude.ai" class="service-card" target="_blank">
-      <div class="service-icon">
-        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-          <circle cx="16" cy="16" r="14" stroke="#B8960C" stroke-width="1.5"/>
-          <path d="M10 20 L16 10 L22 20" stroke="#B8960C" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-          <line x1="12" y1="17" x2="20" y2="17" stroke="#B8960C" stroke-width="1.5"/>
-        </svg>
-      </div>
-      <span class="service-name">CLAUDE</span>
-      <span class="service-url">claude.ai</span>
-    </a>
-
-    <a href="https://chatgpt.com" class="service-card" target="_blank">
-      <div class="service-icon">
-        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-          <circle cx="16" cy="16" r="14" stroke="#B8960C" stroke-width="1.5"/>
-          <path d="M9 19 Q9 23 13 23 L22 23 Q26 23 26 19 L26 15 Q26 11 22 11 L19 11" stroke="#B8960C" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-          <path d="M23 13 Q23 9 19 9 L10 9 Q6 9 6 13 L6 17 Q6 21 10 21 L13 21" stroke="#B8960C" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-        </svg>
-      </div>
-      <span class="service-name">CHATGPT</span>
-      <span class="service-url">chatgpt.com</span>
-    </a>
-
-    <a href="https://gemini.google.com" class="service-card" target="_blank">
-      <div class="service-icon">
-        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-          <path d="M16 4 L18 14 L28 16 L18 18 L16 28 L14 18 L4 16 L14 14 Z" stroke="#B8960C" stroke-width="1.5" fill="none" stroke-linejoin="round"/>
-        </svg>
-      </div>
-      <span class="service-name">GEMINI</span>
-      <span class="service-url">gemini.google.com</span>
-    </a>
-
-    <a href="https://www.perplexity.ai" class="service-card" target="_blank">
-      <div class="service-icon">
-        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-          <circle cx="16" cy="12" r="6" stroke="#B8960C" stroke-width="1.5"/>
-          <line x1="16" y1="18" x2="16" y2="28" stroke="#B8960C" stroke-width="1.5"/>
-          <line x1="10" y1="22" x2="22" y2="22" stroke="#B8960C" stroke-width="1.5"/>
-        </svg>
-      </div>
-      <span class="service-name">PERPLEXITY</span>
-      <span class="service-url">perplexity.ai</span>
-    </a>
-
+  <!-- AI 서비스 랭킹 -->
+  <div class="ranking-section">
+    <div class="sort-toggle">
+      <button class="toggle-btn active" id="btn-perf" onclick="setSort('perf')">🏆 성능순</button>
+      <button class="toggle-btn" id="btn-user" onclick="setSort('user')">👥 사용자순</button>
+    </div>
+    <div class="ranking-list" id="aiList">
+      <!-- JS Rendered -->
+    </div>
   </div>
 
   <!-- YouTube -->
@@ -279,6 +289,49 @@
       <iframe src="https://www.youtube.com/embed/zjkBMFhNj_g" allowfullscreen></iframe>
     </div>
   </div>
+
+  <script>
+    const aiData = [
+      { id: 'claude', name: 'CLAUDE', version: 'Claude 3.5 Sonnet', org: 'Anthropic', url: 'https://claude.ai', users: '약 3천만 명', perfRank: 1, userRank: 4 },
+      { id: 'chatgpt', name: 'CHATGPT', version: 'GPT-4o', org: 'OpenAI', url: 'https://chatgpt.com', users: '약 2.5억 명', perfRank: 2, userRank: 1 },
+      { id: 'gemini', name: 'GEMINI', version: 'Gemini 1.5 Pro', org: 'Google', url: 'https://gemini.google.com', users: '약 1.5억 명', perfRank: 3, userRank: 3 },
+      { id: 'perplexity', name: 'PERPLEXITY', version: 'Pro (Sonar)', org: 'Perplexity AI', url: 'https://www.perplexity.ai', users: '약 1.5천만 명', perfRank: 4, userRank: 5 },
+      { id: 'copilot', name: 'COPILOT', version: 'GPT-4 Turbo', org: 'Microsoft', url: 'https://copilot.microsoft.com', users: '약 1.8억 명', perfRank: 5, userRank: 2 }
+    ];
+
+    function renderList(sortBy) {
+      const listEl = document.getElementById('aiList');
+      listEl.innerHTML = '';
+
+      const sortedData = [...aiData].sort((a, b) => {
+        if (sortBy === 'perf') return a.perfRank - b.perfRank;
+        return a.userRank - b.userRank;
+      });
+
+      sortedData.forEach((ai, index) => {
+        const card = document.createElement('a');
+        card.href = ai.url;
+        card.target = '_blank';
+        card.className = 'rank-card';
+        card.innerHTML = `
+          <div class="rank-num">${index + 1}</div>
+          <div class="rank-info">
+            <div class="ai-name">${ai.name} <span style="color:#aaa; font-size:11px; font-weight:400;">(${ai.org})</span></div>
+            <div class="ai-version">${ai.version}</div>
+          </div>
+          <div class="ai-users">👥 ${ai.users}</div>
+        `;
+        listEl.appendChild(card);
+      });
+
+      document.getElementById('btn-perf').classList.toggle('active', sortBy === 'perf');
+      document.getElementById('btn-user').classList.toggle('active', sortBy === 'user');
+    }
+
+    // 초기화: 성능순 기본
+    renderList('perf');
+    window.setSort = renderList;
+  </script>
 
   <footer>
     <span class="footer-q">Q.</span>

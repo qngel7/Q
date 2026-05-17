@@ -48,6 +48,7 @@
       letter-spacing: 4px;
       color: var(--gray);
       margin-bottom: 32px;
+      margin-top: -60px; /* 상단으로 전체 이동 */
     }
 
     /* ── HERO ── */
@@ -92,16 +93,7 @@
     }
 
     .hero-tagline {
-      font-size: 15px;
-      letter-spacing: 1px;
-      color: #555;
-      line-height: 2.2;
-      font-weight: 300;
-    }
-
-    .hero-tagline strong {
-      color: var(--dark);
-      font-weight: 500;
+      display: none; /* Removed as requested */
     }
 
     .scroll-hint {
@@ -130,7 +122,7 @@
       align-items: center;
       column-gap: 44px;
       row-gap: 10px;
-      margin-top: 56px;
+      margin-top: 0px; /* 위 롤링배너와의 간격을 줄이기 위해 마진 제거 */
       background: rgba(255, 255, 255, 0.78);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
@@ -179,6 +171,21 @@
       transition: opacity 0.5s;
     }
 
+    .input-wrapper {
+      display: flex;
+      align-items: center;
+      border-bottom: 1.5px solid var(--gold);
+      padding-bottom: 4px;
+    }
+
+    .prefix-010 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 26px;
+      font-weight: 500;
+      color: var(--dark);
+      margin-right: 6px;
+    }
+
     .demo-input input {
       font-family: 'Outfit', sans-serif;
       font-size: 26px;
@@ -186,11 +193,9 @@
       letter-spacing: 2px;
       color: var(--dark);
       border: none;
-      border-bottom: 1.5px solid var(--gold);
       background: transparent;
       outline: none;
-      width: 210px;
-      padding-bottom: 4px;
+      width: 140px;
     }
 
     .demo-input input::placeholder { color: #ccc; }
@@ -249,6 +254,49 @@
       font-weight: 300;
       align-self: flex-end;
       margin-bottom: 4px;
+    }
+
+    /* ── BENEFITS TICKER ── */
+    .benefits-ticker-container {
+      margin-top: 20px;
+      margin-bottom: 21px; /* '당신의 전화번호' 폰트 크기(21px)만큼의 간격만 남김 */
+      height: 120px; /* 기존 40px의 3배 */
+      overflow: hidden;
+      position: relative;
+      width: 100%;
+      max-width: 800px;
+      -webkit-mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
+      mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
+    }
+    
+    .benefits-ticker {
+      display: flex;
+      flex-direction: column;
+      animation: verticalScroll 20s linear infinite;
+    }
+    
+    .benefits-ticker p {
+      height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 27px; /* 30px에서 10% 축소 */
+      font-weight: 400;
+      color: var(--gray);
+      margin: 0;
+      white-space: nowrap;
+      text-align: center;
+      letter-spacing: -0.5px;
+    }
+    
+    .benefits-ticker p strong {
+      color: var(--orange); /* 굵은 글꼴 오렌지색 */
+      font-weight: 700;
+    }
+
+    @keyframes verticalScroll {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-50%); }
     }
 
     /* ── TIERS 섹션 ── */
@@ -367,6 +415,13 @@
 
     /* ── 모바일 ── */
     @media (max-width: 600px) {
+      .benefits-ticker p {
+        font-size: 22.5px; /* 25px에서 10% 축소 */
+        flex-direction: column;
+        line-height: 1.4;
+        white-space: normal;
+      }
+
       .format-demo {
         display: flex;
         flex-direction: column;
@@ -404,10 +459,27 @@
       <span class="logo-q">Q</span>
       <span class="logo-mail">MAIL</span>
     </div>
-    <p class="hero-tagline">
-      네이버도 구글도 대체 불가<br>
-      <strong>번호가 곧 이메일, 이메일이 곧 번호</strong>
-    </p>
+    <!-- 7가지 장점 스크롤 (원래 tagline 위치로 이동) -->
+    <div class="benefits-ticker-container">
+      <div class="benefits-ticker">
+        <!-- 원본 7개 -->
+        <p>✨ 쓰던 메일 그대로, <strong>주소만 엣지있게</strong></p>
+        <p>✨ 긴 영문 대신 <strong>번호 하나만</strong>, 압도적인 심플함</p>
+        <p>✨ 전화번호가 이메일이라 <strong>절대 까먹을 일이 없음</strong></p>
+        <p>✨ 고객에게 확실하게 각인되는 <strong>나만의 주소</strong></p>
+        <p>✨ 이메일과 연락처 통합으로 <strong>관리가 극도로 편리함</strong></p>
+        <p>✨ 스팸 노출 최소화 및 <strong>철저한 프라이버시 보호</strong></p>
+        <p>✨ Q.co.kr 큐닷 생태계의 <strong>프리미엄 혜택 제공</strong></p>
+        <!-- 자연스러운 무한 롤링을 위한 복제본 7개 -->
+        <p>✨ 쓰던 메일 그대로, <strong>주소만 엣지있게</strong></p>
+        <p>✨ 긴 영문 대신 <strong>번호 하나만</strong>, 압도적인 심플함</p>
+        <p>✨ 전화번호가 이메일이라 <strong>절대 까먹을 일이 없음</strong></p>
+        <p>✨ 고객에게 확실하게 각인되는 <strong>나만의 주소</strong></p>
+        <p>✨ 이메일과 연락처 통합으로 <strong>관리가 극도로 편리함</strong></p>
+        <p>✨ 스팸 노출 최소화 및 <strong>철저한 프라이버시 보호</strong></p>
+        <p>✨ Q.co.kr 큐닷 생태계의 <strong>프리미엄 혜택 제공</strong></p>
+      </div>
+    </div>
 
     <div class="format-demo">
       <!-- 행1: 레이블 -->
@@ -419,7 +491,10 @@
       <div id="leftContent">
         <div class="demo-phone" id="phoneDisplay">010-1234-5678</div>
         <div class="demo-input" id="inputState">
-          <input id="phoneInput" type="tel" placeholder="010-0000-0000" maxlength="13">
+          <div class="input-wrapper">
+            <span class="prefix-010">010 -</span>
+            <input id="phoneInput" type="tel" placeholder="0000 0000" maxlength="9">
+          </div>
           <button id="submitBtn">
             <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
               <line x1="0" y1="6.5" x2="11" y2="6.5" stroke="currentColor" stroke-width="1.5"/>
@@ -440,6 +515,8 @@
         <span class="loop-text" id="rightLoop">01012345678</span><span class="email-at">@</span><span class="email-Q">Q</span><span class="email-domain">.co.kr</span>
       </div>
     </div>
+
+
 
     <div class="scroll-hint">SCROLL</div>
   </section>
